@@ -1,10 +1,11 @@
 {
-  "name": "employee_tracker",
+  "name": "emp-tracker",
   "version": "1.0.0",
-  "description": "",
+  "description": "Employee Tracker using Node.js, Inquirer, and MySQL.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,15 @@
   "bugs": {
     "url": "https://github.com/blanfried/Employee_Tracker/issues"
   },
-  "homepage": "https://github.com/blanfried/Employee_Tracker#readme"
-}
+  "homepage": "https://github.com/blanfried/Employee_Tracker#readme",
+  "dependencies": {
+    "console-table-printer": "^2.11.1",
+    "console.table": "^0.10.0",
+    "express": "^4.18.1",
+    "inquirer": "^8.2.4",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.20",
+    "run": "^1.4.0"
+  
+  } 
+  }
