@@ -316,3 +316,18 @@
             });
             })
       };
+
+      // Function to exit and stop connection 
+
+      function exit() {
+            console.log("Thank you for using Emplyee Tracker!");
+            connection.end();
+      }
+      
+      app.use((req, res) => {
+            res.status(404).end();
+      });
+      
+      app.listen(PORT, () => {
+            console.log(`Server running on port ${PORT}`);
+      });
