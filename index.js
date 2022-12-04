@@ -256,3 +256,63 @@
             );
             });
       };
+
+      // Function to remove employee from list 
+
+      function removeEmployee() {
+            inquirer
+            .prompt([
+            {
+            name: "id",
+            type: "input",
+            message: "Please enter the Employee id",
+      
+            }
+            ]).then(function(answer) {
+            connection.query("DELETE FROM employee WHERE id = ?", [answer.id],
+            function(err) {
+                  if (err) throw err;
+                  console.log("You have successfully removed this employee!");
+                  run();
+            })
+            })
+      }
+      
+      // function to update role on list 
+      
+      updateRole = () => {
+            connection.query("SELECT * FROM employee", function (err, res) {
+            if (err) throw err;
+            inquirer 
+                  .prompt([
+                  {
+                  name: "updateRole",
+                  type: "list",
+                  message: "Which employee's role do you want to update?",
+                  choices: function () {
+                  var choiceArray = [];
+                  for (var i = 0; i < res.length; i++) {
+                        choiceArray.push(res[i].last_name);
+                  }
+                  return choiceArray;
+                  }
+                  }
+                  ])
+                  .then(function(answer) {
+                  inquirer
+                  .prompt([
+                        {
+                        name: "changeRole",
+                        type: "input",
+                        message: "What is the employee's new role id number?"
+                        },
+                  ])
+                  .then(function (roleAnswer) {
+                  connection.query("UPDATE employee SET role_id = ? WHERE last_name = ?", [roleAnswer.changeRole, answer.updateRole]);
+                  console.log("You have successfully updated the employee's role!");
+                  run();
+                  })
+      
+            });
+            })
+      };
